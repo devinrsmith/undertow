@@ -11,8 +11,8 @@ import static io.undertow.Handlers.resource;
 public class App {
     public static void main(String[] args) throws IOException {
         final Undertow server = Undertow.builder()
-                .addHttpListener(Integer.parseInt(args[1]), "localhost")
-                .setHandler(resource(new FileResourceManager(new File(args[0]), 100))
+                .addHttpListener(Integer.parseInt(args[2]), args[0])
+                .setHandler(resource(new FileResourceManager(new File(args[1]), 100))
                         .setDirectoryListingEnabled(true))
                 .build();
         server.start();
